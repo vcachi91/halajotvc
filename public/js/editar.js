@@ -1,15 +1,18 @@
 var app = new Vue({
     el: "#respuesta_app",
     data: {
+        id:respuestasInfo != undefined ? respuestasInfo[0].id : '',
         nombre: respuestasInfo != undefined ? respuestasInfo[0].nombre : '',
         formdata:[],       
         fields: []
     },
     methods: {
+        //Agrega nuevo campo
         addRow: function() {
             this.fields.push({
           });
         },
+        //Elimina campo
         delRow: function() {
             this.fields.pop();
         },
@@ -26,19 +29,14 @@ var app = new Vue({
             }else{
                 $.ajax({
                     async: true,	
-                    url: phost() + 'ajax-guardar',
+                    url: phost() + 'ajax-guardar-respuestas',
                     type: "post",
                     headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },		
-                    data: {nombre:this.nombre, respuesta:this.fields},
+                    data: {id:this.id, respuesta:this.fields},
                     success: function (response) {   
-                        toastr.success('Guardado correctamente.', 'Checkbox', {timeOut: 5000}); 
-                        setTimeout(function () {
-                            $(':input').val('');
-                            location.reload();
-                        },1000);
-                
+                        toastr.success('Guardado correctamente.', 'Respuestas', {timeOut: 5000}); 
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                        console.log(textStatus, errorThrown);
