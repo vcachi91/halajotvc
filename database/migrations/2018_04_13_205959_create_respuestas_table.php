@@ -15,7 +15,7 @@ class CreateRespuestasTable extends Migration
     {
         Schema::create('respuestas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->text('nombre');
             $table->string('checkbox_id');
             $table->string('estado')->default('1');
             $table->timestamps();

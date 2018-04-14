@@ -1,0 +1,7 @@
+# ignore all logs
+*.log
+.vscode/
+vendor/*
+tests/*
+.env
+storage/*

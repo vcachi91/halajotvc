@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Checkbox as getCheckbox;
+use App\Respuestas as getRespuestas;
+
 use Request;
 
 class HomeController extends Controller
@@ -85,14 +87,25 @@ class HomeController extends Controller
             exit;
 
     }
-
+    //Funcion para guardar el checkbox usando ajax
     public function ajax_guardar(){
     $data = $_POST;
     $array_nombre['nombre'] = $data['nombre'];
     //Guardar nombre chexbox   
     $checkbox = getCheckbox::create($array_nombre);    
-    //$checkbox = getCheckbox::create($data['mi_array']);
     echo json_encode($checkbox);
     exit; 
     }
+
+    //Funcion para guardar respuestas usando ajax
+    public function ajax_guardar_respuestas(){
+        $data = $_POST;
+        $datos['id'] = $data['id'];
+        $datos['respuestas'] = $data['respuesta'];
+        dd($datos);
+        //Guardar respuestas
+        $respuestas = getRespuestas::create($datos);    
+        echo json_encode($respuestas);
+        exit; 
+        }
 }
