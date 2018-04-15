@@ -70,7 +70,7 @@ class HomeController extends Controller
                 {                   
                     $opciones = "";
 					$opciones .= '<a href="' . url('lista/detalle/' . $row->id) . '" data-id="' . $row->id . '" class="btn btn-block btn-outline btn-success">Ver Detalle</a>';
-                    $opciones .= '<a href="#" data-id="' . $row->id . '" class="btn btn-block btn-outline btn-danger subir_documento">Eliminar</a>';                    
+                    $opciones .= '<a href="' . url('lista/eliminar/' . $row->id . '?id=' . $row->id) . '" data-id="' . $row->id . '" class="btn btn-block btn-outline btn-danger">Eliminar</a>';                    
                     
                     $response->rows[$i]["id"] = $row->id;
                     $response->rows[$i]["cell"] = array(
@@ -107,4 +107,21 @@ class HomeController extends Controller
         echo json_encode($respuestas);
         exit; 
         }
+
+    //FUncion para eliminar respuestas
+    public function ajax_eliminar_respuestas(){
+        $data = $_POST;     
+        //Guardar respuestas
+        $respuestas = getRespuestas::where('id', $data['id']); 
+        $respuestas->delete();
+        echo json_encode($respuestas);
+        exit; 
+        }  
+    public function eliminar(){
+        $data = $_GET;
+        //Guardar respuestas
+        $checkbox = getCheckbox::where('id', $data['id']); 
+        $checkbox->delete();
+        return redirect('/');
+        }         
 }
