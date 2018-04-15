@@ -13,8 +13,27 @@ var app = new Vue({
           });
         },
         //Elimina campo
-        delRow: function() {
-            this.fields.pop();
+        delRow: function(event) {
+            //console.log(event.currentTarget.getAttribute('data-id'));
+            var id_respuesta = event.currentTarget.getAttribute('data-id');
+            $.ajax({
+                async: true,	
+                url: phost() + 'ajax-eliminar-respuestas',
+                type: "post",
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },		
+                data: {id:id_respuesta},
+                success: function (response) {   
+                    toastr.warning('Eliminado correctamente.', 'Respuestas', {timeOut: 5000}); 
+                    location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                   console.log(textStatus, errorThrown);
+                }
+        
+        
+                    }); 
         },
         pushFields: function()
 		{
