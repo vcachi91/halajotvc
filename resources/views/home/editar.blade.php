@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Main page')
+@section('title', 'Respuestas')
 
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">    
@@ -8,6 +8,7 @@
       <!-- nombre de checkbox -->
       <div class="form-group">
       <input type="text" placeholder="Nombre del Checkbox" id="nombre" readonly class="form-control" v-model="nombre">   
+      <input type="hidden" id="checkbox_id" v-model="id">
    </div>
     <!-- respuesta checkbox -->
     <div class="input-group">
@@ -17,7 +18,8 @@
         placeholder="Respuesta..."
         id="respuesta"
         class="form-control"
-        v-model="field.nombre"></textarea></div>
+        v-model="field.nombre"></textarea>
+        </div>
       <div class="input-group-btn">
         <button class="btn btn-success" @click="addRow"><icon class="fa fa-plus"></icon></button>
         <button class="btn btn-danger" @click="delRow"><icon class="fa fa-minus"></icon></button>

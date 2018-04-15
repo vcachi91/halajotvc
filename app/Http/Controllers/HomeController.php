@@ -100,11 +100,10 @@ class HomeController extends Controller
     //Funcion para guardar respuestas usando ajax
     public function ajax_guardar_respuestas(){
         $data = $_POST;
-        $datos['id'] = $data['id'];
-        $datos['respuestas'] = $data['respuesta'];
-        dd($datos);
+        $datos['checkbox_id'] = $data['id'];
+        $datos['nombre'] = $data['respuesta'];
         //Guardar respuestas
-        $respuestas = getRespuestas::create($datos);    
+        $respuestas = getRespuestas::guardar_respuestas($datos);    
         echo json_encode($respuestas);
         exit; 
         }
