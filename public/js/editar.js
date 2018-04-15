@@ -3,8 +3,8 @@ var app = new Vue({
     data: {
         id:respuestasInfo != undefined ? respuestasInfo[0].id : '',
         nombre: respuestasInfo != undefined ? respuestasInfo[0].nombre : '',
-        formdata:[],       
-        fields: []
+        formdata: respuestasInfo != undefined ? respuestasInfo[0].respuestas : [],       
+        fields: respuestasInfo[0].respuestas
     },
     methods: {
         //Agrega nuevo campo
@@ -19,7 +19,6 @@ var app = new Vue({
         pushFields: function()
 		{
     	this.formdata.push({
-      name: this.name,
       fields : this.fields
       });
         },

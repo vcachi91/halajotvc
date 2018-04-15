@@ -21,6 +21,6 @@ class Checkbox extends Model
         return $query->get();
     }
     public function respuestas() {
-        return $this->hasMany(Respuestas::class, 'id', 'checkbox_id')->where('estado', 1);
+        return $this->hasMany(Respuestas::class, 'checkbox_id', 'id')->where('estado', 1);
     }    
 }
