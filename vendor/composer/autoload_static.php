@@ -247,6 +247,7 @@ class ComposerStaticInit3097506e5980f42289a9f5a06e599d51
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'CreateCheckboxsTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_13_191109_create_checkboxs_table.php',
+        'CreateDescripcionesTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_16_162728_create_descripciones_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateRespuestasTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_13_205959_create_respuestas_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
