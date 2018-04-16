@@ -10,30 +10,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/css/ui.jqgrid.css" />
     <link rel="stylesheet" href="<?php echo asset('css/vendor.css'); ?>" />
     <link rel="stylesheet" href="<?php echo asset('css/app.css'); ?>" />
+    <link rel="stylesheet" href="<?php echo asset('css/summernote.css'); ?>" />
+    <link rel="stylesheet" href="<?php echo asset('css/summernote-bs.css'); ?>" />
 
 </head>
-<body>
+<body style="background:white!important">
 
   <!-- Wrapper-->
     <div id="wrapper">
         <!-- Page wraper -->
-        <div id="page-wrapper" class="gray-bg">
+        <div>
             <!-- Main view  -->
             <?php echo $__env->yieldContent('content'); ?>
 
-            <!-- Footer -->
-            <?php echo $__env->make('layouts.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
+        
         </div>
         <!-- End page wrapper-->
 
     </div>
     <!-- End wrapper-->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>    
+
 <script>
     $(document).ready(function(){
         $(".chosen-select").chosen()
     });
+</script>
+<script>
+    $(document).ready(function(){
+    $('#show').click(function() {
+      $('#bloque_general').toggle("slide");
+    });
+});
 </script>
 <script>
 var respuestasInfo = <?php !empty($lista_info) ? print(json_encode($lista_info)) : print('"0"') ?>;
@@ -46,6 +54,15 @@ var respuestasInfo = <?php !empty($lista_info) ? print(json_encode($lista_info))
 <script src="<?php echo asset('js/admin_form.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset('js/editar.js'); ?>" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.jquery.min.js" type="text/javascript"></script>
+<script src="<?php echo asset('js/summernote.min.js'); ?>" type="text/javascript"></script>
+<script>
+        $(document).ready(function(){
+
+            $('.summernote').summernote();
+
+       });
+    </script>
+
 <?php $__env->startSection('scripts'); ?>
 <?php echo $__env->yieldSection(); ?>
 

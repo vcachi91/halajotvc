@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Checkbox as getCheckbox;
 use App\Respuestas as getRespuestas;
+use App\Generales as getGenerales;
 
 use Request;
 
@@ -10,7 +11,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home/index');
+        $generales = getGenerales::where('estado', 1)->get()->toArray();
+        $data['generales'] = $generales;
+        return view('home/index', $data);
     }
 
     public function minor()
@@ -22,6 +25,15 @@ class HomeController extends Controller
             $data['lista_info'] = getCheckbox::info($id)->toArray();
             return view('home/editar', $data);
         }
+
+    public function vista()
+    {
+        $opciones = getCheckbox::where('estado', 1)->get();
+        $generales = getGenerales::where('estado', 1)->get()->toArray();
+        $data['opciones'] = $opciones;
+        $data['generales'] = $generales;
+        return view('home/vista', $data);
+    }    
 
     public function ajax_listar() {
         $sidx="id";
@@ -97,6 +109,12 @@ class HomeController extends Controller
     exit; 
     }
 
+    public function guardar_generales(){
+        $data = $_POST;
+        $generales = getGenerales::guardar_generales($data);
+        return redirect('/');
+        }
+
     //Funcion para guardar respuestas usando ajax
     public function ajax_guardar_respuestas(){
         $data = $_POST;
@@ -123,5 +141,9 @@ class HomeController extends Controller
         $checkbox = getCheckbox::where('id', $data['id']); 
         $checkbox->delete();
         return redirect('/');
-        }         
+        }        
+        
+    public function enviar_respuesta()  {
+        dd($_POST);
+    }
 }

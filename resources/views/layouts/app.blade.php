@@ -10,30 +10,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/css/ui.jqgrid.css" />
     <link rel="stylesheet" href="{!! asset('css/vendor.css') !!}" />
     <link rel="stylesheet" href="{!! asset('css/app.css') !!}" />
+    <link rel="stylesheet" href="{!! asset('css/summernote.css') !!}" />
+    <link rel="stylesheet" href="{!! asset('css/summernote-bs.css') !!}" />
 
 </head>
-<body>
+<body style="background:white!important">
 
   <!-- Wrapper-->
     <div id="wrapper">
         <!-- Page wraper -->
-        <div id="page-wrapper" class="gray-bg">
+        <div>
             <!-- Main view  -->
             @yield('content')
 
-            <!-- Footer -->
-            @include('layouts.footer')
-
+        
         </div>
         <!-- End page wrapper-->
 
     </div>
     <!-- End wrapper-->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>    
+
 <script>
     $(document).ready(function(){
         $(".chosen-select").chosen()
     });
+</script>
+<script>
+    $(document).ready(function(){
+    $('#show').click(function() {
+      $('#bloque_general').toggle("slide");
+    });
+});
 </script>
 <script>
 var respuestasInfo = <?php !empty($lista_info) ? print(json_encode($lista_info)) : print('"0"') ?>;
@@ -46,6 +54,15 @@ var respuestasInfo = <?php !empty($lista_info) ? print(json_encode($lista_info))
 <script src="{!! asset('js/admin_form.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('js/editar.js') !!}" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.jquery.min.js" type="text/javascript"></script>
+<script src="{!! asset('js/summernote.min.js') !!}" type="text/javascript"></script>
+<script>
+        $(document).ready(function(){
+
+            $('.summernote').summernote();
+
+       });
+    </script>
+
 @section('scripts')
 @show
 
