@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 use App\Checkbox as getCheckbox;
 use App\Respuestas as getRespuestas;
 use App\Generales as getGenerales;
-
+use Mail;
 use Request;
 
 class HomeController extends Controller
 {
+
+    public $message;
+
     public function index()
     {
         $generales = getGenerales::where('estado', 1)->get()->toArray();
@@ -146,7 +149,13 @@ class HomeController extends Controller
     public function enviar_respuesta()  {
         $data = $_POST;
         $datos = getRespuestas::enviando_respuestas($data);
-        //dd($datos);
-        return view('home/final', $datos);    
+        $data = array('name'=>"vachi91@gmail.com");
+        Mail::send(['text'=>'home.email'], $data, function($message) {
+            $message->to('abc@gmail.com', 'Tutorials Point')->subject
+               ('Laravel Basic Testing Mail');
+            $message->from('vcachi91@gmail.com','Virat Gandhi');
+         });
+        $info['respuestas'] = $datos;
+        return view('home/final', $info);    
     }
 }
