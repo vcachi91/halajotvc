@@ -21,3 +21,4 @@ Route::get('/lista/detalle/{id}', 'HomeController@editar')->name('guardar');
 Route::get('/lista/eliminar/{id}', 'HomeController@eliminar')->name('guardar');
 Route::post('/ajax-eliminar-respuestas', 'HomeController@ajax_eliminar_respuestas')->name('guardar');
 Route::post('/guardar-generales', 'HomeController@guardar_generales')->name('guardar');
+Route::post('/enviar-respuesta', 'HomeController@enviar_respuesta')->name('guardar');

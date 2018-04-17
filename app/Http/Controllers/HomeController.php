@@ -144,6 +144,9 @@ class HomeController extends Controller
         }        
         
     public function enviar_respuesta()  {
-        dd($_POST);
+        $data = $_POST;
+        $datos = getRespuestas::enviando_respuestas($data);
+        //dd($datos);
+        return view('home/final', $datos);    
     }
 }
