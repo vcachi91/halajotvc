@@ -27,5 +27,12 @@ if(!empty($row['id'])){
 
 return;
 }     
+
+static function enviando_respuestas($data) {
+    $respuestas = new Respuestas;
+    $respuestas->whereIn('checkbox_id', $data['checkbox'])->first();
+    dd($respuestas);
+    return $respuestas;
+}
     
 }
