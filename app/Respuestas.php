@@ -27,11 +27,10 @@ if(!empty($row['id'])){
 
 return;
 }     
-
+//Logica para enviar respuesta
 static function enviando_respuestas($data) {
-    $respuestas = new Respuestas;
-    $respuestas->whereIn('checkbox_id', $data['checkbox'])->first();
-    dd($respuestas);
+    $random = count($data['checkbox']);
+    $respuestas = Respuestas::whereIn('checkbox_id', $data['checkbox'])->orderByRaw('RAND()')->get()->unique('checkbox_id');
     return $respuestas;
 }
     

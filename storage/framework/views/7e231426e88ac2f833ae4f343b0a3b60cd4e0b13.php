@@ -9,11 +9,11 @@
         <form name="generales" action="<?php echo e(url("guardar-generales")); ?>" method="post">
         <label class="col-lg-2 control-label">Texto General</label>
 
-<div class="col-lg-10"><input type="hidden" name="id" value="<?php echo $generales[0]['id']; ?>"><textarea name="descripcion" placeholder="Generales" class="form-control summernote"><?php echo $generales[0]['descripcion']; ?></textarea>
+<div class="col-lg-10"><input type="hidden" name="id" value="<?php echo !empty($generales[0]['id']) ? $generales[0]['id'] : ''; ?>"><textarea name="descripcion" placeholder="Generales" class="form-control summernote"><?php echo !empty($generales[0]['descripcion']) ? $generales[0]['descripcion'] : ''; ?></textarea>
 <?php echo e(csrf_field()); ?>
 
 <button class="btn btn-primary" type="submit">Guardar Cambios</button>
-
+<br /><br />
 </div>
         </form>
       </div>
