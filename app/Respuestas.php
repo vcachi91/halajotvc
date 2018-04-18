@@ -30,7 +30,7 @@ return;
 //Logica para enviar respuesta
 static function enviando_respuestas($data) {
     $random = count($data['checkbox']);
-    $respuestas = Respuestas::whereIn('checkbox_id', $data['checkbox'])->orderByRaw('RAND()')->get()->unique('checkbox_id');
+    $respuestas = Respuestas::whereIn('checkbox_id', $data['checkbox'])->orderByRaw('RAND()')->orderByRaw('(checkbox_id) asc')->get()->unique('checkbox_id');
     return $respuestas;
 }
     
