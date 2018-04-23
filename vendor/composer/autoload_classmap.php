@@ -10,6 +10,7 @@ return array(
     'AssertionError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
     'CreateCheckboxsTable' => $baseDir . '/database/migrations/2018_04_13_191109_create_checkboxs_table.php',
     'CreateDescripcionesTable' => $baseDir . '/database/migrations/2018_04_16_162728_create_descripciones_table.php',
+    'CreateMaratonesTable' => $baseDir . '/database/migrations/2018_04_22_222415_create_maratones_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateRespuestasTable' => $baseDir . '/database/migrations/2018_04_13_205959_create_respuestas_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',

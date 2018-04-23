@@ -9,12 +9,11 @@ function phost()
 	}
 	return host;
 }
-$('#maraton_id').val(dataId);
 
 var token = $('meta[name="csrf-token"]').attr('content');
 //Init Ticket Grid
-$("#checkboxList").jqGrid({
-    url: phost() + 'ajax-listar',
+$("#maratonesList").jqGrid({
+    url: phost() + 'ajax-listar-maratones',
     datatype: "json",
     colNames:[     
      '#',
@@ -28,7 +27,7 @@ $("#checkboxList").jqGrid({
      {name:'opciones', index:'opciones', width:30, align:"center"}
     ],
  mtype: "POST",
-    postData: {_token: token, id:dataId},       
+    postData: {_token: token},       
  height: "auto",
  autowidth: true,
  rowList: [20,30,50,100],
@@ -36,7 +35,7 @@ $("#checkboxList").jqGrid({
  page: 1,
  loadonce: true,
  pager: jQuery('#pager'),
- loadtext: '<p>Cargando lista...',
+ loadtext: '<p>Cargando maratones...',
  hoverrows: true,
  viewrecords: true,
  refresh: true,
@@ -48,7 +47,7 @@ $("#checkboxList").jqGrid({
 });
 
 var app = new Vue({
-    el: "#admin_app",
+    el: "#admin_maratones",
     data: {
         nombre:""       
     },
@@ -59,14 +58,14 @@ var app = new Vue({
             }else{
                 $.ajax({
                     async: true,	
-                    url: phost() + 'ajax-guardar',
+                    url: phost() + 'ajax-guardar-maratones',
                     type: "post",
                     headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },		
-                    data: {nombre:this.nombre, id:dataId, respuesta:this.fields},
+                    data: {nombre:this.nombre, respuesta:this.fields},
                     success: function (response) {   
-                        toastr.success('Guardado correctamente.', 'Checkbox', {timeOut: 5000}); 
+                        toastr.success('Guardado correctamente.', 'Maratones', {timeOut: 5000}); 
                         setTimeout(function () {
                             $(':input').val('');
                             location.reload();
