@@ -9,11 +9,11 @@ class Checkbox extends Model
 {
     protected $table = 'checkboxs';
     protected $fillable = [
-        'nombre', 'estado', 'created_at', 'updated_at'];
+        'nombre', 'estado', 'created_at', 'updated_at', 'maraton_id'];
     protected $guarded = ['id'];
 
-    static function getList() {
-        $query = self::orderBy('id', 'desc')->get();
+    static function getList($id) {
+        $query = self::orderBy('id', 'desc')->where('maraton_id', $id)->get();
         return $query->where('estado', '1');
 	}     
     static function info($id) {       

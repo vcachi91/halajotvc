@@ -41,9 +41,13 @@
     $('#show').click(function() {
       $('#bloque_general').toggle("slide");
     });
+    $('#generar_frame').click(function() {
+      $('#mostrar_frame').toggle("slide");
+    });
 });
 </script>
 <script>
+var dataId = <?php !empty($data_id) ? print(json_encode($data_id)) : print('"0"') ?>;
 var respuestasInfo = <?php !empty($lista_info) ? print(json_encode($lista_info)) : print('"0"') ?>;
 </script>
 <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
@@ -52,6 +56,7 @@ var respuestasInfo = <?php !empty($lista_info) ? print(json_encode($lista_info))
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js" type="text/javascript"></script>
 <script src="{!! asset('js/admin_form.js') !!}" type="text/javascript"></script>
+<script src="{!! asset('js/maratones_admin.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('js/editar.js') !!}" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.jquery.min.js" type="text/javascript"></script>
 <script src="{!! asset('js/summernote.min.js') !!}" type="text/javascript"></script>

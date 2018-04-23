@@ -8,7 +8,7 @@ class Generales extends Model
 {
     protected $table = 'generales';
     protected $fillable = [
-        'descripcion', 'estado', 'created_at', 'updated_at'];
+        'descripcion', 'estado', 'created_at', 'updated_at', 'maraton_id'];
     protected $guarded = ['id'];
 
 static function guardar_generales($datos) {
@@ -20,6 +20,7 @@ if(!empty($datos['id'])){
 }else{
     $guardando = new Generales;
     $guardando->descripcion = $datos['descripcion'];
+    $guardando->maraton_id = $datos['maraton_id'];
     $guardando->save();
 }
     
